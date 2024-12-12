@@ -54,6 +54,61 @@ app.get('/tasks', async (req, res) => {
     }
 });
 
+app.put('/tasks/:id', async (req, res) => {
+    try {
+        const { header, subText, date, tag } = req.body; // Destructure updated fields from the request body
+        const taskId = req.params.id;
+
+        // Find the task by ID
+        const task = await Task.findById(taskId);
+        if (!task) {
+            return res.status(404).json({ message: 'Task not found' }); // Task not found
+        }
+
+        // Update task fields
+        task.header = header || task.header;
+        task.subText = subText || task.subText;
+        task.date = date || task.date;
+        task.tag = tag || task.tag;
+
+        // Save the updated task
+        const updatedTask = await task.save();
+        res.status(200).json({
+            message: 'Task updated successfully',
+            task: updatedTask,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error updating task',
+            error: error.message,
+        });
+    }
+});
+
+// DELETE Request: Delete a task by ID
+app.delete('/tasks/:id', async (req, res) => {
+    try {
+        const taskId = req.params.id;
+
+        // Find the task by ID
+        const task = await Task.findById(taskId);
+        if (!task) {
+            return res.status(404).json({ message: 'Task not found' }); // Task not found
+        }
+
+        // Remove the task from the database
+        await task.remove();
+        res.status(200).json({
+            message: 'Task deleted successfully',
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error deleting task',
+            error: error.message,
+        });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
