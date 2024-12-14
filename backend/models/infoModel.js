@@ -19,8 +19,8 @@ const TaskSchema = new mongoose.Schema({
     tag: {
         type: String,
         required: false, // Optional field
-        enum: ['work', 'personal', 'urgent', 'other'], // Restrict to specific tags
-        default: 'other', // Default tag
+        enum: ['Work', 'Personal', 'Urgent', 'Other'], // Restrict to specific tags
+        default: 'Other', // Default tag
     },
 });
 

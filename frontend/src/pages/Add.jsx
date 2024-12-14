@@ -1,8 +1,67 @@
 import React from 'react'
+import { useState,useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from'axios'
 
 const Add = () => {
+  const[notes,setNotes]=useState({
+    header:"",
+    subText:"",
+    date:"",
+    tag:""
+  })
+  const navigate = useNavigate();
+  const handleChange=(e)=>{
+    setNotes((prev)=>({...prev,[e.target.name]:e.target.value}))
+    
+  }
+  const handleClick=async(e)=>{
+    e.preventDefault();
+    try{
+    await axios.post("http://localhost:8000/tasks",notes);
+    navigate("/");
+    }
+    catch(err){
+      console.log(err)
+    }
+
+  }
   return (
-    <div>Add</div>
+    <div className='form'>
+      <h1>Enter new note info</h1>
+      <input 
+      type="text"
+      placeholder="Enter Note title"
+      name='header'
+      value={notes.header}
+      onChange={handleChange}
+     
+      />
+       <input 
+      type="text"
+      placeholder="Enter Note title"
+      name='subText'
+      value={notes.subText}
+      onChange={handleChange}
+     
+      />
+        <input 
+      type="date"
+  
+      name='date'
+      value={notes.date}
+      onChange={handleChange}
+     
+      />
+       <select name="tag" value={notes.tag} onChange={handleChange}>
+        <option value="" disabled>Select a Tag</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Urgent">Urgent</option>
+        <option value="Other">Other</option>
+      </select>
+      <button onClick={handleClick}>Submit</button>       
+   </div>
   )
 }
 
