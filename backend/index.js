@@ -1,5 +1,6 @@
 const express = require('express');
-const connectToDatabase = require('./db'); // Import the db.js
+const connectToDatabase = require('./db'); // Import the db.js\
+const cors=require('cors')
 require('dotenv').config(); 
 const Task = require('./models/infoModel'); // Import the Task model
 
@@ -12,6 +13,7 @@ connectToDatabase();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Example Route
 app.post('/tasks', async (req, res) => {
@@ -97,7 +99,7 @@ app.delete('/tasks/:id', async (req, res) => {
         }
 
         // Remove the task from the database
-        await task.remove();
+        await task.deleteOne();
         res.status(200).json({
             message: 'Task deleted successfully',
         });
