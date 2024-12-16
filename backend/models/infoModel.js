@@ -9,12 +9,13 @@ const TaskSchema = new mongoose.Schema({
     },
     subText: {
         type: String,
-        required: false, // Optional field
+        required: true, // Optional field
         trim: true,
     },
     date: {
-        type: Date,
-        default: Date.now, // Default to the current date and time
+        type: String,
+        required: true,
+        default: new Date().toISOString().split('T')[0].toString() // Default to the current date and time
     },
     tag: {
         type: String,

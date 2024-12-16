@@ -2,12 +2,13 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from'axios'
+import './Add.css'
 
 const Add = () => {
   const[notes,setNotes]=useState({
     header:"",
     subText:"",
-    date:"",
+    date: new Date().toISOString().split('T')[0].toString(),
     tag:""
   })
   const navigate = useNavigate();
@@ -45,14 +46,7 @@ const Add = () => {
       onChange={handleChange}
      
       />
-        <input 
-      type="date"
   
-      name='date'
-      value={notes.date}
-      onChange={handleChange}
-     
-      />
        <select name="tag" value={notes.tag} onChange={handleChange}>
         <option value="" disabled>Select a Tag</option>
         <option value="Work">Work</option>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import './Update.css';
+
 
 const Update = () => {
-  const [notes, setnotes] = useState({ header: "", subText: "", date: "", tags: "" });
+  const [notes, setnotes] = useState({ header: "", subText: "", date: new Date().toISOString().split('T')[0].toString(), tags: "" });
   const navigate = useNavigate();
   const location = useLocation();
   const noteId = location.state;
@@ -47,12 +49,7 @@ const Update = () => {
           value={notes.subText}
           onChange={handleChange}
         />
-        <input
-          type="date"
-          name="date"
-          value={notes.date}
-          onChange={handleChange}
-        />
+       
         <select name="tags" value={notes.tags} onChange={handleChange}>
           <option value="" disabled>Select a Tag</option>
           <option value="Work">Work</option>

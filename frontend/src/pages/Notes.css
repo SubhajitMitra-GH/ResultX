@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Young+Serif&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    
+    font-family: Poppins;
+}
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Thumb color on hover */
+  }
+  .heading::-webkit-scrollbar {
+    height: 6px;
+
+
+/* Reduces scrollbar height (horizontal scrollbar) */
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Adjust icon size inside buttons */
+  .button-add img,
+  .button-edit img,
+  .button-delete img {
+    width: 30px;  /* You can adjust the size of the icon */
+    height: 30px;
+  }
+  
+  /* The button styling will still be in place */
+  .button-add {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+  }
+  
+  .button-edit,
+  .button-delete {
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+  }
+  
+  /* Optional: Hover effect for buttons */
+  button:hover img {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+  
+  /* For better alignment, you can fine-tune these if necessary */
+  .button-edit-delete {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+.note-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.notes{
+
+   align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+   
+    place-items: center;
+    margin: 12vh auto;
+   
+gap: 20px;
+
+  
+
+}
+.header{
+    background-color: aliceblue;
+    box-sizing: border-box;
+    height: 80px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    position: fixed;
+   width: 100vw;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.533);
+}
+.button-add{
+  
+   
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.note{
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px;
+    width: 23vw;
+    height: 32vh;
+    border: black 2px solid;
+    border-radius: 20px;
+}
+
+.sub{
+    padding-right: 5px;
+    width: 20vw;
+    height:18.5vh;
+    text-align: justify;
+    overflow-y: scroll;
+}
+.button-edit-delete{
+    position:absolute;
+    bottom:10px ;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+    
+
+}
+.heading{
+    width: 21vw; /* Fixed display area */
+  height: 6vh; /* Optional: Fixed height */
+ 
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scrolling */
+  
+  box-sizing: border-box; /* Padding included in width */
+  cursor: grab;
+}
+.date{
+    width: 16vw;
+    height: 2.5vh;
+    overflow-y: hidden;
+}
+.button-edit{
+    height: 35px;
+    width: 50px;
+    border-radius: 10px;
+}
+.button-delete{
+    height: 35px;
+    width: 50px;
+    border-radius: 10px;
+    position: relative;
+} 
+
+@media (max-width: 999px) {
+
+    .notes{
+        margin-top: 13vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    .note{
+  
+        width: 96vw;
+    }
+    .sub{
+        width: 80vw;
+        height: 16vh;
+    }
+    .heading{
+        width: 80vw;
+        padding: 0;
+        display: flex;
+       
+        align-items: center;
+    }
+}
